@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <form method="post">
+            Username:
+            <input type="text" name="username"><br><br>
+            Password:
+            <input type="text" name="password"><br><br>
+            <input>
+        </form>
+
+        <?php
+            if($SERVER["REQUEST_METHOD"]=="POST")
+                {
+                    $username = $_POST["username"];
+                    $password = $_POST["password"];
+                    if($username=="admin" && $password=="pass123")
+                        {
+                            header("Location:prog6h.php");
+                            exit;
+                        }
+                    else
+                        echo"Invalid Credentials"
+                }
+                ?>
+    </body>
+    </html>
