@@ -1,0 +1,47 @@
+<html>    
+     1. File create <br> 
+         2. File read <br>  
+            3. File append <br> 
+                4. File copy <br>  
+                   5. File delete <br> 
+
+                   <form action="program2.php" method="get">     
+        <input type="text" name="choice">     
+            <input type="submit" name="visit"> 
+    </form> 
+<?php
+if(isset($_GET["choice"]))     
+                    {         
+                        $n=$_GET["choice"]; 
+                        switch($n) 
+                        {     
+                            case 1:
+                                    $var=fopen("sample.txt", "w");
+                                    $a="Nithin DS";
+                                    fwrite($var,$a);         //fclose();         
+                                    echo "File created Successfully";         
+                                    echo "<br>";         
+                                    break;     
+                            case 2:
+                                    $var=fopen("sample.txt", "r");         
+                                    echo fgets($var);         
+                                    break;     
+                            case 3:         
+                                    $var=fopen("sample.txt", "a+");         
+                                    fwrite($var,"Good Boy");         
+                                    rewind($var);         
+                                    echo fread($var,filesize('sample.txt'));         
+                                    fclose($var);         
+                                    break;     
+                            case 4:         
+                                    copy("sample.txt", "sample1.txt");         
+                                    echo "Filed Copied Successfuly";         
+                                    break;     
+                            case 5:         
+                                    echo unlink("sample.txt") ? "File deleted Successfully" : "File could not be deleted";
+                                             break; 
+                        }     
+                                             
+                    } 
+?> 
+                                    </html>
