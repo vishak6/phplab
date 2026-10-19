@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>Simple PHP Form Validation</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Simple PHP Form Validation</h2>
+
+<?php
+
+$name = $email = $password = "";
+
+$nameErr = $emailErr = $passwordErr = "";
+
+function clean($data)
+{
+    return htmlspecialchars(stripslashes(trim($data)));
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $name = clean($_POST["name"] ?? '');
+    $email = clean($_POST["email"] ?? '');
+    $password = clean($_POST["password"] ?? '');
+
+    // Name Validation
+    if (!$name)
+    {
+        $nameErr = "Name is required";
+    }
+    elseif (!preg_match("/^[a-z A-Z]+$/", $name))
+    {
+        $nameErr = "Only letters allowed";
+    }
+
+    // Email Validation
+    if (!$email)
+    {
+        $emailErr = "Email is required";
+    }
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
+        $emailErr = "Invalid email format";
+    }
+
+    // Password Validation
+    if (!$password)
+    {
+        $passwordErr = "Password is required";
+    }
+    elseif (!preg_match("/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&_]).{7,}$/", $password))
+    {
+        $passwordErr = "Password must be 7+ chars with uppercase, number & special char";
+    }
+
+    // Display inputs if no errors
+    if (!$nameErr && !$emailErr && !$passwordErr)
+    {
+        echo "<h3>Your Input:</h3>";
+        echo "Name: $name<br>";
+        echo "Email: $email<br>";
+        echo "Password: " . htmlspecialchars($password) . "<br>";
+    }
+}
+?>
+
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+
+    Name:
+    <input type="text" name="name"
+           value="<?php echo $name; ?>" placeholder="name">
+    <span class="error"><?php echo $nameErr; ?></span>
+
+    <br><br>
+
+    Email:
+    <input type="text" name="email"
+           value="<?php echo $email; ?>" placeholder="email">
+    <span class="error"><?php echo $emailErr; ?></span>
+
+    <br><br>
+
+    Password:
+    <input type="password" name="password" placeholder="password">
+    <span class="error"><?php echo $passwordErr; ?></span>
+
+    <br><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+</body>
+</html>
