@@ -1,9 +1,0 @@
-<html>
-<body>
-    <h1>Student Profile</h1>
-    <p> Name: Vishakhan Pillai</p>
-    <p> College: PSGCAS</p>
-    <p> Course:CSDA</p>
-    <a href="prog6.php">Logout</a>
-</body>
-</html>
