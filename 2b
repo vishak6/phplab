@@ -1,0 +1,88 @@
+<html>
+<body>
+
+<h1 style="text-align:left;">STRING, MATH AND DATE METHODS</h1>
+
+<form action="program2b.php" method="get">
+
+1. STRING FUNCTIONS<br>
+2. DATE FUNCTIONS<br>
+3. MATH FUNCTIONS<br><br>
+
+Enter Your Choice :
+<input type="number" name="CHOICE" required><br><br>
+
+<input type="submit" value="Submit"><br><br></form>
+
+<?php
+
+if(isset($_GET["CHOICE"]) && !empty($_GET["CHOICE"]))
+{
+    $n = $_GET["CHOICE"];
+
+    switch($n)
+    {
+        case 1:
+
+            echo "<b>STRING FUNCTIONS</b><br><br>";
+
+            $string = "  basic functiOn  ";
+
+            echo "Original String : ".$string."<br>";
+            echo "strtoupper() : ".strtoupper($string)."<br>";
+            echo "ucfirst() : ".ucfirst(trim($string))."<br>";
+            echo "strrev() : ".strrev($string)."<br>";
+            echo "rtrim() : '".rtrim($string)."'<br>";
+            echo "ltrim() : '".ltrim($string)."'<br>";
+            echo "strtolower() : ".strtolower($string)."<br>";
+            echo "str_repeat() : ".str_repeat($string,3)."<br>";
+            echo "str_replace() : ".str_replace("basic","Elementary",strtolower($string));
+
+            break;
+
+
+        case 2:
+
+            echo "<b>DATE FUNCTIONS</b><br><br>";
+
+            date_default_timezone_set("Asia/Kolkata");
+            
+            //echo "Day : ".date("d")."<br>";
+            //echo "Month : ".date("m")."<br>";
+            //echo "Year : ".date("Y")."<br>";
+
+            echo "Current Date : ".date("d-m-Y")."<br>";
+            echo "Current Time : ".date("h:i:s A")."<br>";
+
+            break;
+
+
+        case 3:
+
+            echo "<b>MATH FUNCTIONS</b><br><br>";
+
+            $n1 = 95.5;
+            $n2 = 96.3;
+            $n3 = 90.65;
+            $n4 = -91.56;
+            $n5 = 25;
+
+            echo "floor($n1) = ".floor($n1)."<br>";
+            echo "ceil($n2) = ".ceil($n2)."<br>";
+            echo "round($n3) = ".round($n3)."<br>";
+            echo "abs($n4) = ".abs($n4)."<br>";
+            echo "sqrt($n5) = ".sqrt($n5)."<br>";
+            echo "pow(5,2) = ".pow(5,2)."<br>";
+            echo "max(25,50,75) = ".max(25,50,75)."<br>";
+            echo "min(25,50,75) = ".min(25,50,75)."<br>";
+
+            break;
+    }
+}
+
+?>
+
+</form>
+
+</body>
+</html>
