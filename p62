@@ -1,5 +1,7 @@
 <html>
 <body>
+<?php
+?>
     <h1>Student Profile</h1>
     <p> Name: Vishakhan Pillai</p>
     <p> College: PSGCAS</p>
