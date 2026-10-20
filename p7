@@ -1,46 +1,48 @@
 <html>
 <head>
-<title>College Home Page</title>
-<style>
-body{
-background-color:grey;
-margin:0;
-}
-.header1{
-display:flex;
-color:white;
-background-color:purple;
-padding:3px;
-}
-ul{ display:flex; }
-li{
-list-style:none;
-padding:0 10px;
-}
-.headlist{
-text-decoration:none;
-font-size:16px;
-}
-.mainclass{
-backgroundimage:url("https://www.collegebatch.com/static/clggallery/psg-college-of-arts-science-coimbatore364743.webp");
-
-}
-</style>
+    <title>College Home Page</title>
+    <style>
+        body{
+            margin:0;
+            font-family:Arial;
+        }
+        header{
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav{
+            background: #555;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a{
+            color:white;
+            margin:15px;
+            text-decoration:none;
+        }
+        .content{
+            padding: 30px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<header class="header1">
-<img src="https://www.psgcas.ac.in/gallery/images/logopsg.jpg" width="60">
-<h2>PSG COLLEGE OF ARTS AND
-SCIENCE</h2>
-<nav><ul>
-<li><a class="headlist"
-href="program6.php" style="color:yellow">Admissions</a></li>
-<li><a class="headlist" href="#" style="color:yellow">Home</a></li></ul></nav></header>
-<main class="mainclass"><br>
-<h2>Welcome to Psgcas</h2>
-<p><b>Explore our wide range of academics progress</b></p></em></b></p>
-<img src="https://psgbcc.in/assets/logo_psg.png"
-alt="college logo" width="100">
-</main>
+    <header>
+        <img src="logo.jpeg" width="120" height="120">
+        <h1>PSG College of Arts and Science</h1>
+        <p>Welcome to Our College</p>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About us</a>
+        <a href="#">Courses</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class = "content">
+        <h2> Welcome to our College</h2>
+        <p> PSG College of Arts & Science provides quality education</p>
+    </div>
 </body>
 </html>
