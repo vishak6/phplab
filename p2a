@@ -11,6 +11,7 @@
     </form> 
 <?php
     $choice = $_GET["choice"]??"";
+    if($choice != ""){
     switch($choice){
         case 1:
             $file = fopen("sample.txt","w");
@@ -41,6 +42,7 @@
         default:
         echo"Invalid Choice";
     }
+}
 ?>
 </body>
 </html>
