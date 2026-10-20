@@ -37,10 +37,10 @@ switch ($n)
     $num=$_GET["num"]?? "";          
     $sum=0;            
     $rem=0;            
-    for($i=0;$i<=$num;$i++)
+    while($num!=0)
     {                     
         $rem=$num%10;                     
-        $sum=$sum+$rem;                     
+        $sum+=$rem;                     
         $num=(int)($num/10);     
     }                 
     echo "Sum of digit: $sum";                
