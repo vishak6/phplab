@@ -1,47 +1,47 @@
 <html>    
-     1. File create <br> 
-         2. File read <br>  
-            3. File append <br> 
-                4. File copy <br>  
-                   5. File delete <br> 
-
-                   <form action="program2.php" method="get">     
-        <input type="text" name="choice">     
-            <input type="submit" name="visit"> 
+<body>
+    <form action="prog2a.php" method="get">
+    1. File create <br> 
+    2. File read <br>  
+    3. File append <br> 
+    4. File copy <br>  
+    5. File delete <br> 
+    <input type="text" name="choice">     
+    <input type="submit" name="visit"> 
     </form> 
 <?php
-if(isset($_GET["choice"]))     
-                    {         
-                        $n=$_GET["choice"]; 
-                        switch($n) 
-                        {     
-                            case 1:
-                                    $var=fopen("sample.txt", "w");
-                                    $a="Nithin DS";
-                                    fwrite($var,$a);         //fclose();         
-                                    echo "File created Successfully";         
-                                    echo "<br>";         
-                                    break;     
-                            case 2:
-                                    $var=fopen("sample.txt", "r");         
-                                    echo fgets($var);         
-                                    break;     
-                            case 3:         
-                                    $var=fopen("sample.txt", "a+");         
-                                    fwrite($var,"Good Boy");         
-                                    rewind($var);         
-                                    echo fread($var,filesize('sample.txt'));         
-                                    fclose($var);         
-                                    break;     
-                            case 4:         
-                                    copy("sample.txt", "sample1.txt");         
-                                    echo "Filed Copied Successfuly";         
-                                    break;     
-                            case 5:         
-                                    echo unlink("sample.txt") ? "File deleted Successfully" : "File could not be deleted";
-                                             break; 
-                        }     
-                                             
-                    } 
-?> 
-                                    </html>
+    $choice = $_GET["choice"]??"";
+    switch($choice){
+        case 1:
+            $file = fopen("sample.txt","w");
+            fwrite($file,"Hello World");
+            fclose($file);
+            echo "File Created";
+            break;
+        case 2:
+            $file = fopen("sample.txt","r");
+            echo fgets($file);
+            fclose($file);
+            break;
+
+        case 3:
+            $file = fopen("sample.txt","a");
+            fwrite($file,"New append");
+            fclose($file);
+            echo"File Appended";
+            break;
+        case 4:
+            copy("sample.txt","sample1.txt");
+            echo"Text Copied";
+            break;
+        case 5:
+            unlink("sample.txt");
+            echo"File Deleted";
+            break;
+        default:
+        echo"Invalid Choice";
+    }
+?>
+</body>
+</html>
+ 
