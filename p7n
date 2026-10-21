@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>College Home Page</title>
+
+<style>
+body {
+    margin: 0;
+    background: grey;
+}
+
+header {
+    display: flex;
+    background: purple;
+    color: white;
+    padding: 5px;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    list-style: none;
+    padding: 0 10px;
+}
+
+.main {
+    background-image: url("college.jpg");
+    background-size: cover;
+    height: 400px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.jpg" width="60">
+<h2>PSG COLLEGE OF ARTS AND SCIENCE</h2>
+
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="program6.php">Admissions</a></li>
+</ul>
+</nav>
+</header>
+
+<main class="main">
+<h2>Welcome to PSGCAS</h2>
+<p><b>Explore our wide range of academics progress</b></p>
+<img src="logo.jpg" width="100">
+</main>
+
+</body>
+</html>
