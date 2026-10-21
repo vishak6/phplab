@@ -1,99 +1,63 @@
 <html>
-<head>
-    <title>Simple PHP Form Validation</title>
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
-</head>
 <body>
-
-<h2>Simple PHP Form Validation</h2>
-
+    <form method="post">
+        Name:
+        <input type="text" name="name"><br><br>
+        Email:
+        <input type="text" name="email"><br><br>
+        Password:
+        <input type="text" name="password"><br><br>
+        <input type="submit" value="submit">
+    </form>
 <?php
-
-$name = $email = $password = "";
-
-$nameErr = $emailErr = $passwordErr = "";
-
-function clean($data)
-{
-    return htmlspecialchars(stripslashes(trim($data)));
+function clean($data){
+    htmlspecialchars(stripslashes(trim($data)));
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    $name = clean($_POST["name"] ?? '');
-    $email = clean($_POST["email"] ?? '');
-    $password = clean($_POST["password"] ?? '');
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $name = $email = $password = "";
+    $nameErr = $emailErr = $passwordErr = "";
 
-    // Name Validation
-    if (!$name)
-    {
-        $nameErr = "Name is required";
+    if(empty($_POST["name"])){
+        $nameErr = "Name is Required";
     }
-    elseif (!preg_match("/^[a-z A-Z]+$/", $name))
-    {
-        $nameErr = "Only letters allowed";
+    elseif(!preg_match("/^[a-zA-Z]+$/", $_POST["name"])){
+        $nameErr = "Only Letter Allowed";
+    }
+    else{
+        $name = clean($_POST["name"]);
     }
 
-    // Email Validation
-    if (!$email)
-    {
+    if(empty($_POST["email"])){
         $emailErr = "Email is required";
     }
-    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
-    {
-        $emailErr = "Invalid email format";
+    elseif(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
+        $emailErr = "Invalid Email";
+    }
+    else{
+        $email = clean($_POST["email"]);
     }
 
-    // Password Validation
-    if (!$password)
-    {
-        $passwordErr = "Password is required";
+    if(empty($_POST["password"])){
+        $passwordErr = "Password is Required";
     }
-    elseif (!preg_match("/^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&_]).{7,}$/", $password))
-    {
-        $passwordErr = "Password must be 7+ chars with uppercase, number & special char";
+    elseif(!preg_match("/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{7,}$/", $_POST["password"])){
+        $passwordErr = "Password must contain an upper case, digit, special character";
+    }
+    else{
+        $password = clean($_POST["password"]);
     }
 
-    // Display inputs if no errors
-    if (!$nameErr && !$emailErr && !$passwordErr)
-    {
-        echo "<h3>Your Input:</h3>";
+    echo $nameErr."<br>";
+    echo $emailErr."<br>";
+    echo $passwordErr."<br>";
+
+    if($nameErr=="" && $emailErr=="" && $passwordErr==""){
         echo "Name: $name<br>";
         echo "Email: $email<br>";
-        echo "Password: " . htmlspecialchars($password) . "<br>";
+        echo "Password: $password<br>";
     }
 }
 ?>
-
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-
-    Name:
-    <input type="text" name="name"
-           value="<?php echo $name; ?>" placeholder="name">
-    <span class="error"><?php echo $nameErr; ?></span>
-
-    <br><br>
-
-    Email:
-    <input type="text" name="email"
-           value="<?php echo $email; ?>" placeholder="email">
-    <span class="error"><?php echo $emailErr; ?></span>
-
-    <br><br>
-
-    Password:
-    <input type="password" name="password" placeholder="password">
-    <span class="error"><?php echo $passwordErr; ?></span>
-
-    <br><br>
-
-    <input type="submit" value="Submit">
-
-</form>
-
 </body>
 </html>
